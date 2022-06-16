@@ -1,4 +1,4 @@
-Allo
+Ce site a été créé aujourd'hui!
 
 # Allo
 
