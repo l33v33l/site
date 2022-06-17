@@ -5,14 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes d'apprentissage</title>
+
+    <!-- Mettre en gras le texte dans CSS : https://www.w3schools.com/cssref/pr_font_weight.asp-->
     <style>
     .haut-bordure {
-      background-color: blue;
-      color: white;
-      border: 20px black;
+      background-color: rgb(219, 219, 219);
+      color: blue;
+      font-weight: bold;
+      border: 40px black;
       padding: 20px;
       margin: 20px;
     }
+    .millieu-bordure {
+      background-color: rgba(152, 200, 227, 0.919);
+      color: rgb(50, 50, 169);
+    }
+    .bas-bordure {
+      background-color: rgb(219, 219, 219);
+      color: blue;
+      text-align: center;
+    }
+
     .HTML-button {
       background-color: rgb(255, 103, 57, 0.9);
       color:white;
@@ -31,26 +44,32 @@
       }
     </style>
 
-    <!-- Garder un élément en-bas de la page : https://www.w3schools.com/cssref/pr_pos_bottom.asp -->
+    <!-- Garder un élément en-bas de la page : https://www.w3schools.com/cssref/pr_pos_bottom.asp 
+        Avoir rajouté l'attribut "position: absolute" a descendu en-bas alros que bottom tout seul ne le faisait pas.
+    -->
   </head>
   <body>
     <!-- Comment ajouter un bandeau en-arrière plan?
          Comment ajouter une table des matières?
     -->
     <div class="haut-bordure">
-    <h2>Ce que j'ai appris à propos de</h1>
+      <h2>Ce que j'ai appris à propos de</h1>
     </div>
         
     <!-- On peut pairer un div avee une class : https://www.w3schools.com/tags/tag_div.asp -->
 
-    <div> 
-    <button class="HTML-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/HTML';">HTML</button>
-    <button class="CSS-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/CSS';">CSS</button>
-    <button class="GitHub-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/GitHub';">GitHub</button>
-  </div>
+    <div class="millieu-bordure"> 
+      <button class="HTML-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/HTML';">HTML</button>
+      <button class="CSS-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/CSS';">CSS</button>
+      <button class="GitHub-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/GitHub';">GitHub</button>
+    </div>
+    
     <br>
     
-    <a class="lien-bas" href="https://www.youtube.com">Prochain lien à regarder : </a>
+    <div class="bas-bordure">
+      <a class="lien-bas" href="https://www.youtube.com">Prochain lien à regarder : </a>
+    </div>
+
     <!-- md vs html
     Html est plus expressif mais md est plus facile à lire.
 https://developers.google.com/style/markdown -->
@@ -76,3 +95,5 @@ https://developers.google.com/style/markdown -->
 -
 -
 -->
+
+<!-- Y a-t-il un service qui permet d'héberger gratuitement un site web dynamique? wordpress? -->
