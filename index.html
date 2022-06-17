@@ -6,40 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes d'apprentissage</title>
     <style>
-    div {
-        background-color: blue;
-        color: white;
-        border: 20px black;
-        padding: 20px;
-        margin: 20px;
+    .haut-bordure {
+      background-color: blue;
+      color: white;
+      border: 20px black;
+      padding: 20px;
+      margin: 20px;
     }
-        .HTML-button {
-            background-color: rgb(255, 103, 57, 0.9);
-            color:white;
-        }
-        .HTML-button:hover {
-            cursor: grab;
-            background-color: white;
-            color:rgb(255, 103, 57, 0.9) ;
-        }
-        .HTML-button:active {
-            opacity: 0.3;
-        }
+    .HTML-button {
+      background-color: rgb(255, 103, 57, 0.9);
+      color:white;
+    }
+    .HTML-button:hover {
+      cursor: grab;
+      background-color: white;
+      color:rgb(255, 103, 57, 0.9) ;
+    }
+    .HTML-button:active {
+      opacity: 0.3;
+    }
+    .lien-bas {
+      bottom: 10px;
+        
+      }
     </style>
   </head>
   <body>
     <!-- Comment ajouter un bandeau en-arrière plan?
          Comment ajouter une table des matières?
     -->
-    <div>
+    <div class="haut-bordure">
     <h2>Ce que j'ai appris à propos de</h1>
     </div>
         
+    <!-- On peut pairer un div avee une class : https://www.w3schools.com/tags/tag_div.asp -->
+
+    <div> 
     <button class="HTML-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/HTML';">HTML</button>
     <button class="CSS-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/CSS';">CSS</button>
     <button class="GitHub-button" target = "_blank" onclick="window.location.href = 'https://l33v33l.github.io/site/GitHub';">GitHub</button>
-
-    <a href="https://www.youtube.com">Prochain lien à regarder : </a>
+  </div>
+    <br>
+    
+    <a class="lien-bas" href="https://www.youtube.com">Prochain lien à regarder : </a>
     <!-- md vs html
     Html est plus expressif mais md est plus facile à lire.
 https://developers.google.com/style/markdown -->
