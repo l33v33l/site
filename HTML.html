@@ -13,8 +13,8 @@
       }
       .tdm {
         position: relative;
-        left: 30px;
-        top: 10px;
+        left: 50px;
+        top: 1px;
         bottom: 10px;
         border: 1px salmon;
       }
@@ -30,10 +30,18 @@
       .retour-lien {
         text-align: center;
       }
+      .ligne {
+        display: flex;
+        flex-grow: 1;
+        border-bottom: 1px solid black;
+        margin: 20px;
+      }
     </style>
   </head>
   <body>
     <h1 class="en-tete">Notes à propos de HTML</h1>
+
+    <span class="ligne"></span>
 
     <div class="tdm" id="tdm">
       <h2>Table des matières</h2>
@@ -49,6 +57,9 @@
     <!-- Comment créer un élément ancre pour aller vers via un menu/table des matières? 
         https://www.w3docs.com/snippets/html/how-to-create-an-anchor-link-to-jump-to-a-specific-part-of-a-page.html
     -->
+
+    <span class="ligne"></span>
+
     <h2 id="a-tdm">&lt;a&gt;</h2>
     <!-- Comment écrire les symboles plus petit que et plus grand que : https://stackoverflow.com/questions/49877506/how-can-i-put-as-a-text-in-html -->
     <p>
