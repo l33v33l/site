@@ -10,6 +10,8 @@
       .bouton-accueil {
         bottom: 10px;
         position: absolute;
+      }
+      .bordure-bas {
         text-align: center;
       }
     </style>
@@ -20,12 +22,15 @@
     <p>
       &lt;style&gt; est utilisé dans la section &lt;head&gt; du document html.
     </p>
+    <div class="bordure-bas">
+      <button
+        class="bouton-accueil"
+        onclick="window.location.href = 'https://l33v33l.github.io/site/';"
+      >
+        Retour à la page d'accueil
+      </button>
+    </div>
 
-    <button
-      class="bouton-accueil"
-      onclick="window.location.href = 'https://l33v33l.github.io/site/';"
-    >
-      Retour à la page d'accueil
-    </button>
+    <!-- On dirait qu'on ne peut centrer un bouton que si on fait cela via le formattage d'un div. -->
   </body>
 </html>

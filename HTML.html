@@ -7,15 +7,42 @@
     <title>Document</title>
 
     <style>
+      .en-tete {
+        text-align: center;
+      }
+      .tdm {
+        position: relative;
+        left: 80px;
+        top: 20px;
+      }
       .bouton-accueil {
         bottom: 10px;
         position: absolute;
+        text-align: center;
+      }
+      .bordure-bas {
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <h1>Notes à propos de HTML</h1>
-    <h2>&lt;a&gt;</h2>
+    <h1 class="en-tete">Notes à propos de HTML</h1>
+
+    <div class="tdm">
+      <h2>Table des matières</h2>
+      <a href="#a-tdm">Section &lt;a&gt;</a>
+      <br />
+      <a href="">Section &lt;p&gt;</a>
+      <br />
+      <a href="">Section &lt;div&gt;</a>
+      <br />
+      <a href="">Section &lt;style&gt;</a>
+    </div>
+
+    <!-- Comment créer un élément ancre pour aller vers via un menu/table des matières? 
+        https://www.w3docs.com/snippets/html/how-to-create-an-anchor-link-to-jump-to-a-specific-part-of-a-page.html
+    -->
+    <h2 id="a-tdm">&lt;a&gt;</h2>
     <!-- Comment écrire les symboles plus petit que et plus grand que : https://stackoverflow.com/questions/49877506/how-can-i-put-as-a-text-in-html -->
     <p>
       L'Élément a est un ancre (anchor) vers un lien. href est un attribut. href
@@ -30,12 +57,14 @@
       avec "_blank" permet d'ouvrir le lien dans un autre onglet.
     </p>
 
-    <button
-      class="bouton-accueil"
-      onclick="window.location.href = 'https://l33v33l.github.io/site/';"
-    >
-      Retour à la page d'accueil
-    </button>
+    <div class="bordure-bas">
+      <button
+        class="bouton-accueil"
+        onclick="window.location.href = 'https://l33v33l.github.io/site/';"
+      >
+        Retour à la page d'accueil
+      </button>
+    </div>
   </body>
   <!-- https://www.w3schools.com/html/html_formatting.asp -->
   <!-- Peut-on ajouter des espaces de paragraphes à l'intérieur d'un élément p?
