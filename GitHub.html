@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GitHub</title>
 
     <style>
       .texte-haut {
@@ -18,12 +18,72 @@
       .bordure-bas {
         text-align: center;
       }
+
+      /* Container holding the image and the text */
+      .container {
+        position: relative;
+        text-align: center;
+        color: black;
+      }
+
+      /* Bottom left text */
+      .bottom-left {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+      }
+
+      /* Top left text */
+      .top-left {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+      }
+
+      /* Top right text */
+      .top-right {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+      }
+
+      /* Bottom right text */
+      .bottom-right {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+      }
+
+      /* Centered text */
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     </style>
   </head>
   <body>
     <p class="texte-haut">Ceci est la page GitHub</p>
 
-    <img src="GitHub.png" alt="Cette image n'est pas disponible..." />
+    <div class="container">
+      <img
+        src="GitHub.png"
+        alt="L'image de GitHub n'est pas trouvée"
+        width="50%"
+      />
+
+      <!-- https://www.w3schools.com/tags/att_img_width.asp -->
+      <div class="bottom-left">Bottom Left</div>
+      <div class="top-left">Top Left</div>
+      <div class="top-right">Top Right</div>
+      <div class="bottom-right">Bottom Right</div>
+      <div class="centered">Centered</div>
+    </div>
+
+    <!-- Image : https://www.w3schools.com/tags/tag_img.asp -->
+
+    <!-- <img src="GitHub.png" alt="Cette image n'est pas disponible..." /> -->
     <div class="bordure-bas">
       <button
         class="bouton-accueil"

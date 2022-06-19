@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <!-- 
+    <script>
+      function countRabbits() {
+        for (let i = 1; i <= 3; i++) {
+          alert("Rabbit number " + i);
+        }
+      }
+    </script>
+
+    <input type="button" onclick="countRabbits()" value="Count rabbits!" />
+    -->
+
+    <!-- https://javascript.info/introduction-browser-events -->
+
+    <!-- Ce tutoriel : https://www.youtube.com/watch?v=DqaTKBU9TZk
+    -->
+
+    <input id="todo-title" type="text" />
+    <input id="date-picker" type="date" />
+    <!-- Utiliser une boîte d'input de texte pour saisir une nouvelle valeur -->
+    <button onclick="addTodo()">Ajouter la tâche dans la liste</button>
+    <!-- Mieux de rajouter la fonction ici dans onclick -->
+
+    <button onclick="removeTodo()">Effacer la liste</button>
+    <br />
+
+    <!-- Div ça produit une boîte autour du texte -->
+
+    <div id="todo-list"></div>
+
+    <script>
+      const todos = ["Get groceries", "Wash car", "Make dinner"];
+
+      // On peut créer des objets qui contiennent des éléments qui sont liés. Ex. let todo = {title: "Get groceries", dueDate:"2021-10-04"}
+      // todo.tile = "Get groceries"
+
+      // Différence entre var, let et const : https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
+      /* Création d'un tableau */
+
+      render();
+
+      function addTodo() {
+        let textbox = document.getElementById("todo-title");
+        /* La valeur saisie dans input */
+        let title = textbox.value;
+        /* Aller chercher la valeur */
+        const datePicker = document.getElementById("date-picker");
+        const dueDate = datePicker.value;
+
+        const id = "" + new Date().getTime;
+        todos.push(title);
+        render();
+      }
+
+      function removeTodo(event) {
+        // event lié à onClick
+        const deleteButton = event.target;
+        const idToDelete = deleteButton.id;
+
+        render();
+      }
+
+      function render() {
+        // Le problème c'est que l'entièreté de la liste est affichée à chaque fois.
+        // Donc, le tutoriel propose : reset la liste à chaque fois. Avec document.body.innerHTML, qui efface la valeur de la la page.
+        document.getElementById("todo-list").innerHTML = "";
+
+        todos.forEach(function (todoTitle) {
+          /* Avoir créé la variable formelle ou paramètre pour la réutiliser dans la fonction */
+          let element = document.createElement("div");
+          element.innerText = todoTitle;
+          /* Pour changer le texte dans l'élément */
+          let todoList = document.getElementById("todo-list");
+          todoList.appendChild(element);
+        });
+      }
+
+      /*  alert(todos);
+            todos.push("Do laundry");
+            /* Ajouter un élément au tableau
+            alert("Voici la liste avec un élément de plus : \n " + todos);
+
+            todos.pop();
+            /* Enlever le dernier élément de la liste
+            alert("Voici la liste avec un élément de moins : \n " + todos);
+      */
+
+      /* Les strings ont aussi des méthodes
+            console.log('hello'.toUpperCase());
+      */
+
+      /* Rendu à 30:48 */
+
+      /*   alert("hello");
+            alert(typeof todo1);
+            alert(todo1 + todo2);
+          */
+
+      /* Plus besoin de ça vu qu'on a entré la fonction dans la boucle for :
+
+          function addTodo(todoTitle) {
+              let element = document.createElement("div");
+              element.innerText = todoTitle;
+              document.body.appendChild(todoTitle;
+            }
+          */
+
+      /* Plus besoin de ça si on utilise la boucle for :
+
+            addTodo(todo3);
+            addTodo(todo2);
+            addTodo(todo1);
+            */
+
+      /*
+            let element = document.createElement("div");
+            element.innerText = todo1;
+            /* Pour changer le texte dans l'élément */
+      /*
+            document.body.appendChild(element);
+            */
+
+      /* Pour réutiliser l'élément element et lui réassigner une autre valeur sans utiliser une fonction
+            element = document.createElement("div");
+            element.innerText = todo2;
+            document.body.appendChild(element);
+              */
+
+      /* On peut créer des éléments et les sauvegarder en javascript */
+    </script>
+
+    <!-- On peut créer une fonction avec javascript.-->
+    <!-- Javascript ne fonctionne pas tout seul. Il doit être utilisé à l'intérieur de HTML-->
+    <!-- JavaScript est le seul language qui peut rouler dans un navigateur web. -->
+    <!-- let permet de créer une variable. 
+          typeof nomDeLaVariable : va afficher le type
+          on peut utiliser + pour concaténer deux strings ensemble.
+      -->
+
+    <!--Va remplacer la page par ce qui est entre guillemets document.body.innerHTML ='hello'; -->
+    <!--Va afficher dans la console le texte console.log('hi') -->
+
+    <!-- 
+          Alert : https://www.w3schools.com/jsref/met_win_alert.asp
+          Script : https://www.w3schools.com/tags/tag_script.asp
+      -->
+  </body>
+</html>
