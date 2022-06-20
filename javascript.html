@@ -38,7 +38,13 @@
     <div id="todo-list"></div>
 
     <script>
-      const todos = ["Get groceries", "Wash car", "Make dinner"];
+      const todos = [
+        { title: "Get groceries", dueDate: "2021-10-04" },
+        { title: "Wash car", dueDate: "2021-02-03" },
+        { title: "Make dinner", dueDate: "2021-05-10" },
+      ];
+
+      //On n'est pas obligé d'assigner des valeurs à une variable quand elle est créé, à moins que cette variable soit une constante (const).
 
       // On peut créer des objets qui contiennent des éléments qui sont liés. Ex. let todo = {title: "Get groceries", dueDate:"2021-10-04"}
       // todo.tile = "Get groceries"
@@ -56,8 +62,7 @@
         const datePicker = document.getElementById("date-picker");
         const dueDate = datePicker.value;
 
-        const id = "" + new Date().getTime;
-        todos.push(title);
+        todos.push({ title: title, dueDate: dueDate });
         render();
       }
 
@@ -74,10 +79,11 @@
         // Donc, le tutoriel propose : reset la liste à chaque fois. Avec document.body.innerHTML, qui efface la valeur de la la page.
         document.getElementById("todo-list").innerHTML = "";
 
-        todos.forEach(function (todoTitle) {
+        //Afficher le contenu de la liste mis-à-jour
+        todos.forEach(function (todo) {
           /* Avoir créé la variable formelle ou paramètre pour la réutiliser dans la fonction */
           let element = document.createElement("div");
-          element.innerText = todoTitle;
+          element.innerText = todo.title;
           /* Pour changer le texte dans l'élément */
           let todoList = document.getElementById("todo-list");
           todoList.appendChild(element);
