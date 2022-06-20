@@ -38,7 +38,28 @@
     <div id="todo-list"></div>
 
     <script>
-      // Section model selon MVC
+      // Section model selon MVC. Ça contient les données.
+      /* MVC : model, view, controller
+           Model : contient le code qui sauvegarde et gère les données.
+           View : code qui gère les visuels. Produit en fonction du data (model)
+           Controller : connecte model et view ensemble.
+             1) RÉpondre aux événement de view (ex. : click de button)
+             2) Dit au model de mettre à jour son data et de même pour les views.
+
+       */
+
+      // MODEL
+
+      // Si localStroage a déjà un tableau, alors l'utiliser, sinon, utiliser le tableau par défaut.
+      /* let todos;
+
+      // JE N'AI PAS INCLUS LA PARTIE SAVED TODO ET LOCAL STORAGE VU QUE ÇA NE FONCTIONNE PAS.
+
+       const savedTodos = JSON.parse(localStorage.getItem("todos"));
+       if (Array.isArray(savedTodos)) {
+         todos = savedTodos;
+       } else {
+         */
 
       let todos = [
         { title: "Get groceries", dueDate: "2021-10-04", id: "id1" },
@@ -54,42 +75,19 @@
       // Différence entre var, let et const : https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
       /* Création d'un tableau */
 
-      render();
+      // Section qui créer les todos devraient être dans la section model vu que ça créer le data.
 
-      function addTodo() {
-        const textbox = document.getElementById("todo-title");
-        /* La valeur saisie dans input */
-        const title = textbox.value;
-        /* Aller chercher la valeur */
-        const datePicker = document.getElementById("date-picker");
-        const dueDate = datePicker.value;
-
+      function createTodo(title, dueDate) {
         const id = "" + new Date().getTime();
         // Il y a un problème là vu que ça retourne un nombre et non un string. Le problème est que dans la fonction delete on compare ça à un string (voir la propriété id).
         // Donc, la solution est de rajouter un string vide pour convertir en string.
 
         todos.push({ title: title, dueDate: dueDate, id: id });
-        render();
+
+        // saveTodos();
       }
-
-      /* MVC : model, view, controller 
-          Model : contient le code qui sauvegarde et gère les données.
-          View : code qui gère les visuels. Produit en fonction du data (model)
-          Controller : connecte model et view ensemble.
-            1) RÉpondre aux événement de view (ex. : click de button)
-            2) Dit au model de mettre à jour son data et de même pour les views.
-      
-      */
-
-      function removeTodo() {
-        // event lié à onClick
-        alert("id");
-        render();
-      }
-
-      function deleteTodo(event) {
-        const deleteButton = event.target;
-        const idToDelete = deleteButton.id;
+      // Deletes a todo
+      function removeTodo(idToDelete) {
         todos = todos.filter(function (todo) {
           // Si l'id du todo match l'id à effacer, alors retourner faux.
           if (todo.id === idToDelete) {
@@ -98,9 +96,40 @@
             return true;
           }
         });
+        // saveTodos();
+      }
+
+      /* 
+      function saveTodos() {
+        //Local storage : emmagasiner des données puis retrouver avec une clef.
+        // Ça ne peut sauvegarder que des strings.
+        localStorage.setItem("todos", JSON.stringify(todos));
+        //Donc, convertir en string les valeurs du tableau.
+      }
+      */
+
+      // Controller
+      function addTodo() {
+        const textbox = document.getElementById("todo-title");
+        /* La valeur saisie dans input */
+        const title = textbox.value;
+        /* Aller chercher la valeur */
+        const datePicker = document.getElementById("date-picker");
+        const dueDate = datePicker.value;
+
+        createTodo(title, dueDate);
         render();
       }
 
+      function deleteTodo(event) {
+        const deleteButton = event.target;
+        const idToDelete = deleteButton.id;
+
+        removeTodo(idToDelete);
+        render();
+      }
+
+      // VIEW
       function render() {
         // Le problème c'est que l'entièreté de la liste est affichée à chaque fois.
         // Donc, le tutoriel propose : reset la liste à chaque fois. Avec document.body.innerHTML, qui efface la valeur de la la page.
@@ -125,56 +154,58 @@
         });
       }
 
-      /*  alert(todos);
-            todos.push("Do laundry");
-            /* Ajouter un élément au tableau
-            alert("Voici la liste avec un élément de plus : \n " + todos);
+      render();
 
-            todos.pop();
-            /* Enlever le dernier élément de la liste
-            alert("Voici la liste avec un élément de moins : \n " + todos);
-      */
+      /*  alert(todos);
+             todos.push("Do laundry");
+             /* Ajouter un élément au tableau
+             alert("Voici la liste avec un élément de plus : \n " + todos);
+
+             todos.pop();
+             /* Enlever le dernier élément de la liste
+             alert("Voici la liste avec un élément de moins : \n " + todos);
+       */
 
       /* Les strings ont aussi des méthodes
-            console.log('hello'.toUpperCase());
-      */
+             console.log('hello'.toUpperCase());
+       */
 
       /* Rendu à 30:48 */
 
       /*   alert("hello");
-            alert(typeof todo1);
-            alert(todo1 + todo2);
-          */
+             alert(typeof todo1);
+             alert(todo1 + todo2);
+           */
 
       /* Plus besoin de ça vu qu'on a entré la fonction dans la boucle for :
 
-          function addTodo(todoTitle) {
-              let element = document.createElement("div");
-              element.innerText = todoTitle;
-              document.body.appendChild(todoTitle;
-            }
-          */
+           function addTodo(todoTitle) {
+               let element = document.createElement("div");
+               element.innerText = todoTitle;
+               document.body.appendChild(todoTitle;
+             }
+           */
 
       /* Plus besoin de ça si on utilise la boucle for :
 
-            addTodo(todo3);
-            addTodo(todo2);
-            addTodo(todo1);
-            */
+             addTodo(todo3);
+             addTodo(todo2);
+             addTodo(todo1);
+             */
 
       /*
-            let element = document.createElement("div");
-            element.innerText = todo1;
-            /* Pour changer le texte dans l'élément */
+             let element = document.createElement("div");
+             element.innerText = todo1;
+             /* Pour changer le texte dans l'élément */
       /*
-            document.body.appendChild(element);
-            */
+             document.body.appendChild(element);
+             */
 
       /* Pour réutiliser l'élément element et lui réassigner une autre valeur sans utiliser une fonction
-            element = document.createElement("div");
-            element.innerText = todo2;
-            document.body.appendChild(element);
-              */
+             element = document.createElement("div");
+             element.innerText = todo2;
+             document.body.appendChild(element);
+               */
 
       /* On peut créer des éléments et les sauvegarder en javascript */
     </script>
