@@ -83,7 +83,11 @@
         todos.forEach(function (todo) {
           /* Avoir créé la variable formelle ou paramètre pour la réutiliser dans la fonction */
           let element = document.createElement("div");
-          element.innerText = todo.title;
+          element.innerText = todo.title + " " + todo.dueDate;
+
+          const deleteButton = document.createElement("button");
+          deleteButton.innerHTML = "Delete";
+          element.appendChild(deleteButton);
           /* Pour changer le texte dans l'élément */
           let todoList = document.getElementById("todo-list");
           todoList.appendChild(element);
