@@ -30,7 +30,7 @@
     <button onclick="addTodo()">Ajouter la tâche dans la liste</button>
     <!-- Mieux de rajouter la fonction ici dans onclick -->
 
-    <button onclick="removeTodo()">Effacer la liste</button>
+    <button onclick="removeTodo()">Effacer un élément de la liste</button>
     <br />
 
     <!-- Div ça produit une boîte autour du texte -->
@@ -38,10 +38,12 @@
     <div id="todo-list"></div>
 
     <script>
-      const todos = [
-        { title: "Get groceries", dueDate: "2021-10-04" },
-        { title: "Wash car", dueDate: "2021-02-03" },
-        { title: "Make dinner", dueDate: "2021-05-10" },
+      // Section model selon MVC
+
+      let todos = [
+        { title: "Get groceries", dueDate: "2021-10-04", id: "id1" },
+        { title: "Wash car", dueDate: "2021-02-03", id: "id2" },
+        { title: "Make dinner", dueDate: "2021-05-10", id: "id3" },
       ];
 
       //On n'est pas obligé d'assigner des valeurs à une variable quand elle est créé, à moins que cette variable soit une constante (const).
@@ -55,22 +57,47 @@
       render();
 
       function addTodo() {
-        let textbox = document.getElementById("todo-title");
+        const textbox = document.getElementById("todo-title");
         /* La valeur saisie dans input */
-        let title = textbox.value;
+        const title = textbox.value;
         /* Aller chercher la valeur */
         const datePicker = document.getElementById("date-picker");
         const dueDate = datePicker.value;
 
-        todos.push({ title: title, dueDate: dueDate });
+        const id = "" + new Date().getTime();
+        // Il y a un problème là vu que ça retourne un nombre et non un string. Le problème est que dans la fonction delete on compare ça à un string (voir la propriété id).
+        // Donc, la solution est de rajouter un string vide pour convertir en string.
+
+        todos.push({ title: title, dueDate: dueDate, id: id });
         render();
       }
 
-      function removeTodo(event) {
+      /* MVC : model, view, controller 
+          Model : contient le code qui sauvegarde et gère les données.
+          View : code qui gère les visuels. Produit en fonction du data (model)
+          Controller : connecte model et view ensemble.
+            1) RÉpondre aux événement de view (ex. : click de button)
+            2) Dit au model de mettre à jour son data et de même pour les views.
+      
+      */
+
+      function removeTodo() {
         // event lié à onClick
+        alert("id");
+        render();
+      }
+
+      function deleteTodo(event) {
         const deleteButton = event.target;
         const idToDelete = deleteButton.id;
-
+        todos = todos.filter(function (todo) {
+          // Si l'id du todo match l'id à effacer, alors retourner faux.
+          if (todo.id === idToDelete) {
+            return false;
+          } else {
+            return true;
+          }
+        });
         render();
       }
 
@@ -87,6 +114,10 @@
 
           const deleteButton = document.createElement("button");
           deleteButton.innerHTML = "Delete";
+          deleteButton.style = "margin-left:12px";
+          // Exemple de document objet model : on peut prendre un élément html et l'utilisé dans JavaScript
+          deleteButton.onclick = deleteTodo;
+          deleteButton.id = todo.id;
           element.appendChild(deleteButton);
           /* Pour changer le texte dans l'élément */
           let todoList = document.getElementById("todo-list");
